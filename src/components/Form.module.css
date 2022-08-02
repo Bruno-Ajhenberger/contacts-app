@@ -1,0 +1,56 @@
+form {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 45vh;
+  padding: 5vh;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 1vh;
+}
+h2 {
+  margin-bottom: 2vh;
+}
+h6 {
+  margin: 0;
+}
+
+input {
+  height: 4vh;
+  margin-bottom: 2vh;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+input::placeholder {
+  font-size: 1.5vh;
+  color: rgba(0, 0, 0, 0.3);
+}
+button {
+  margin-top: 2vh;
+  align-self: flex-end;
+  width: 15vh;
+  height: 4vh;
+  font-size: 1.5vh;
+  background-color: #4f4c46;
+  border: none;
+  color: white;
+}
+button:hover {
+  background-color: green;
+}
+select {
+  margin-bottom: 0.5vh;
+}
+
+.wrongPasswordAlert {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 45vh;
+  padding: 5vh;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 1vh;
+  border: 1px solid red;
+}
+.formSubmit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
