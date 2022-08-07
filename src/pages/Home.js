@@ -1,23 +1,15 @@
-import Form2 from "../components/Form2";
+import AddContactFormController from "../components/AddContactForm/AddContactFormController";
 import NavBar from "../components/ui/NavBar";
-import { useNavigate } from "react-router-dom";
-import UsersContext from "../store/users-context";
+import UsersContext from "../store/ContactsContext";
 import { useContext, useEffect } from "react";
 
 const Home = () => {
   const userCntx = useContext(UsersContext);
-  console.log(userCntx.isLoggedIn);
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (userCntx.isLoggedIn === false) {
-      navigate("/login");
-    }
-  }, []);
   return (
     <div>
       <NavBar />
-      <Form2 />
+      <AddContactFormController />
     </div>
   );
 };

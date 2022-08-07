@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import styles from "./NavBar.module.css";
 import { useNavigate } from "react-router-dom";
-import UsersContext from "../../store/users-context";
+import { useAuth } from "../Authentication/AuthContext";
 
 const NavBar = () => {
   let navigate = useNavigate();
-  const userCntx = useContext(UsersContext);
+  const auth = useAuth();
 
   return (
     <div className={styles.main}>
@@ -28,7 +27,7 @@ const NavBar = () => {
       <button
         className={styles.logout}
         onClick={(e) => {
-          userCntx.logOut();
+          auth.signout();
           navigate("/login");
         }}
       >

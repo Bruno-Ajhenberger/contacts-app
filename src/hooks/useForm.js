@@ -1,24 +1,25 @@
 import { useState } from "react";
 
-export default function useForm(defaultNames) {
-  const [formData, setFormDataLocal] = useState(defaultNames);
+export default function useForm(INIT_STATE) {
+  const [formData, setFormData] = useState(INIT_STATE);
+  const [formErrors, setFormErrors] = useState({});
 
-  const updateFormData = (name, value) => {
-    setFormDataLocal({ ...formData, [name]: value });
+  const onInputChange = ({ target: { name, value } }) => {
+    setFormData({ ...formData, [name]: value });
   };
-  const resetFormData = () => {
-    const temp = formData;
-    for (let prop in temp) {
-      temp[prop] = "";
+  const resetForm = () => {
+    setFormData(INIT_STATE);
+  };
+
+  const validateAll = () => {
+    const errors = {};
+    for (const formEntry in formData) {
+      if (!formData[formEntry]) {
+        errors[formEntry] = formEntry + " is Required";
+      }
     }
-    setFormDataLocal(temp);
-    //console.log(temp);
+    setFormErrors(errors);
   };
 
-  const setFormData = (data) => {
-    setFormDataLocal(data);
-    console.log(data);
-  };
-
-  return [formData, updateFormData, resetFormData, setFormData];
+  return { formData, onInputChange, resetForm, formErrors, validateAll };
 }

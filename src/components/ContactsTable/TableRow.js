@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "./TableRow.module.css";
-import UsersContext from "../store/users-context";
+import ContactsContext from "../../store/ContactsContext";
 
 const TableRow = ({
   firstName,
@@ -8,10 +8,10 @@ const TableRow = ({
   Dob,
   contact,
   id,
-  updateHandler,
+  onUpdate,
   contactType,
 }) => {
-  const userContext = useContext(UsersContext);
+  const userContext = useContext(ContactsContext);
 
   return (
     <tr>
@@ -22,14 +22,14 @@ const TableRow = ({
       <td className={styles.update_delete}>
         <button
           onClick={(e) => {
-            updateHandler(id);
+            onUpdate(id);
           }}
         >
           Update
         </button>
         <button
           onClick={(e) => {
-            userContext.removeUser(id);
+            userContext.removeContact(id);
           }}
         >
           Delete

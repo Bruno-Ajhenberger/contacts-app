@@ -1,27 +1,15 @@
-import { useContext, useEffect, useState } from "react";
 import styles from "./Table.module.css";
-import TableRow from "./TableRow";
-import UsersContext from "../store/users-context";
 import ReactModal from "react-modal";
-import Form2 from "./Form2";
+import TableRow from "./TableRow";
+import UpdateContactFormController from "../UpdateContact/UpdateContactFormController";
 
-const Table = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState();
-  const usersContext = useContext(UsersContext);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-  const onUpdate = (id) => {
-    const user = usersContext.users.filter((user) => user.id === id);
-    setSelectedUser(user[0]);
-    openModal();
-  };
-
+const TableView = ({
+  isOpen,
+  contacts,
+  onUpdate,
+  closeModal,
+  updateContact,
+}) => {
   return (
     <div className={styles.main}>
       <ReactModal
@@ -30,7 +18,10 @@ const Table = () => {
         onRequestClose={closeModal}
         className={styles.modal}
       >
-        <Form2 selectedUser={selectedUser} closeModal={closeModal} />
+        <UpdateContactFormController
+          updateContact={updateContact}
+          closeModal={closeModal}
+        />
       </ReactModal>
       <table>
         <thead>
@@ -42,7 +33,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {usersContext.users.map((user, index) => {
+          {contacts.map((user, index) => {
             return (
               <TableRow
                 key={index}
@@ -52,7 +43,7 @@ const Table = () => {
                 contactType={user.contactType}
                 contact={user.contact}
                 id={user.id}
-                updateHandler={onUpdate}
+                onUpdate={onUpdate}
               />
             );
           })}
@@ -62,4 +53,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default TableView;

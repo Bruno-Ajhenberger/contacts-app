@@ -10,13 +10,13 @@ h2 {
   margin-bottom: 2vh;
 }
 h6 {
-  margin: 0;
+  margin: 1vh 0 0 0;
 }
 
 input {
   height: 4vh;
-  margin-bottom: 2vh;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 1vh;
 }
 input::placeholder {
   font-size: 1.5vh;
@@ -53,4 +53,11 @@ select {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 1.5vh;
+}
+
+.invalid_input {
+  color: red;
+  margin: 0;
+  font-size: 0.6vw;
 }
