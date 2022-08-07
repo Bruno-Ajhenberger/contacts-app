@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LoginFormView from "./LoginFormView";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Authentication/AuthContext";
+import { useAuth } from "../../Authentication/AuthContext";
 import useForm from "../../hooks/useForm";
 
 const INIT_STATE = { userName: "", password: "" };

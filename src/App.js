@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ContactsContextProvider } from "./store/ContactsContext";
 import LandingPage from "./pages/LandingPage";
 import React from "react";
-import { AuthProvider } from "./components/Authentication/AuthContext";
-import RequireAuth from "./components/Authentication/RequireAuth";
+import { AuthProvider } from "./Authentication/AuthContext";
+import RequireAuth from "./Authentication/RequireAuth";
 
 const App = () => {
   return (

@@ -1,6 +1,6 @@
 import styles from "./NavBar.module.css";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Authentication/AuthContext";
+import { useAuth } from "../../Authentication/AuthContext";
 
 const NavBar = () => {
   let navigate = useNavigate();
