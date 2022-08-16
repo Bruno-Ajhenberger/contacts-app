@@ -1,8 +1,8 @@
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
-import ContactTable from "./pages/ContactTable";
+import ContactTablePage from "./pages/ContactTablePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ContactsContextProvider } from "./store/ContactsContext";
+import { ContactsProvider } from "./store/context/ContactsContext";
 import LandingPage from "./pages/LandingPage";
 import React from "react";
 import { AuthProvider } from "./Authentication/AuthContext";
@@ -10,7 +10,7 @@ import RequireAuth from "./Authentication/RequireAuth";
 
 const App = () => {
   return (
-    <ContactsContextProvider>
+    <ContactsProvider>
       <Router>
         <AuthProvider>
           <Routes>
@@ -28,14 +28,14 @@ const App = () => {
               path="/contact-table"
               element={
                 <RequireAuth>
-                  <ContactTable />
+                  <ContactTablePage />
                 </RequireAuth>
               }
             />
           </Routes>
         </AuthProvider>
       </Router>
-    </ContactsContextProvider>
+    </ContactsProvider>
   );
 };
 

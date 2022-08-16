@@ -1,6 +1,6 @@
 import styles from "../LoginForm/Form.module.css";
 
-const AddContactFormView = ({
+const AddContactForm = ({
   onInputChange,
   formData,
   onSubmit,
@@ -61,4 +61,4 @@ const AddContactFormView = ({
   );
 };
 
-export default AddContactFormView;
+export default AddContactForm;

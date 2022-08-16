@@ -1,5 +1,5 @@
 import styles from "./Form.module.css";
-const LoginFormView = ({ onSubmit, onInputChange, formErrors }) => {
+const LoginForm = ({ onSubmit, onInputChange, formErrors }) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -26,4 +26,4 @@ const LoginFormView = ({ onSubmit, onInputChange, formErrors }) => {
   );
 };
 
-export default LoginFormView;
+export default LoginForm;

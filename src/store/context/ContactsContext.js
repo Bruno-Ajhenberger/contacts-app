@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { JsonData } from "../res/JsonDummyData";
+import { JsonData } from "../../res/JsonDummyData";
 
 const ContactsContext = createContext({
   logInInfo: {},
@@ -10,7 +10,7 @@ const ContactsContext = createContext({
   removeContact: (id) => {},
 });
 
-export function ContactsContextProvider({ children }) {
+export function ContactsProvider({ children }) {
   const [contacts, setContacts] = useState(JsonData);
 
   const removeContact = (id) => {
@@ -31,7 +31,7 @@ export function ContactsContextProvider({ children }) {
     });
   };
 
-  const context = {
+  const value = {
     contacts: contacts,
     removeContact: removeContact,
     addContact: addContact,
@@ -39,7 +39,7 @@ export function ContactsContextProvider({ children }) {
   };
 
   return (
-    <ContactsContext.Provider value={context}>
+    <ContactsContext.Provider value={value}>
       {children}
     </ContactsContext.Provider>
   );

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "./TableRow.module.css";
-import ContactsContext from "../../store/ContactsContext";
+import ContactsContext from "../../store/context/ContactsContext";
 
 const TableRow = ({
   firstName,

@@ -1,10 +1,37 @@
-import { useContext } from "react";
-import LoginFormController from "../components/LoginForm/LoginFormController";
-import UsersContext from "../store/ContactsContext";
-const LogIn = () => {
-  const userCntx = useContext(UsersContext);
+import { useEffect, useState } from "react";
+import LoginForm from "../components/LoginForm/LoginForm";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Authentication/AuthContext";
+import useForm from "../hooks/useForm";
 
-  return <LoginFormController />;
+const INIT_STATE = { userName: "", password: "" };
+
+const LogIn = () => {
+  const { formData, onInputChange, formErrors, validateAll } =
+    useForm(INIT_STATE);
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (validateAll() === 0) {
+      auth.signin(formData);
+    }
+  };
+
+  useEffect(() => {
+    if (auth.isAuthenticated === true) {
+      navigate("/home", { replace: true });
+    }
+  }, []);
+
+  return (
+    <LoginForm
+      onSubmit={onSubmit}
+      onInputChange={onInputChange}
+      formErrors={formErrors}
+    ></LoginForm>
+  );
 };
 
 export default LogIn;

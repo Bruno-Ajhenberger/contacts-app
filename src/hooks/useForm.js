@@ -9,7 +9,9 @@ export default function useForm(INIT_STATE) {
   };
   const resetForm = () => {
     setFormData(INIT_STATE);
+    setFormErrors({});
   };
+  console.log(formErrors);
 
   const validateAll = () => {
     const errors = {};
@@ -19,6 +21,7 @@ export default function useForm(INIT_STATE) {
       }
     }
     setFormErrors(errors);
+    return Object.keys(errors).length;
   };
 
   return { formData, onInputChange, resetForm, formErrors, validateAll };

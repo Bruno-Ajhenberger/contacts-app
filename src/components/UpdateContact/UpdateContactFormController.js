@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import useForm from "../../hooks/useForm";
-import ContactsContext from "../../store/ContactsContext";
+import ContactsContext from "../../store/context/ContactsContext";
 import UpdateContactFormView from "../UpdateContact/UpdateContactFormView";
 
 const UpdateContactFormController = ({ updateContact, closeModal }) => {

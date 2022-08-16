@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 import TableRow from "./TableRow";
 import UpdateContactFormController from "../UpdateContact/UpdateContactFormController";
 
-const TableView = ({
+const ContactsTable = ({
   isOpen,
   contacts,
   onUpdate,
@@ -53,4 +53,4 @@ const TableView = ({
   );
 };
 
-export default TableView;
+export default ContactsTable;
