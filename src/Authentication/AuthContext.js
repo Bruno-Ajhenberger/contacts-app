@@ -8,8 +8,9 @@ const AuthContext = createContext({
   signout: () => {},
 });
 
+const user = { username: "kreki", password: "krekut" };
+
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({ username: "kreki", password: "krekut" });
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("isAuthenticated") === null
@@ -36,16 +37,14 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("isAuthenticated", false);
   };
 
-  const context = {
+  const value = {
     user,
     isAuthenticated,
     signin,
     signout,
   };
 
-  return (
-    <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {

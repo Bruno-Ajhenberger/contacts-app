@@ -5,7 +5,7 @@ const AddContactForm = ({
   formData,
   onSubmit,
   resetForm,
-  formErrors,
+  errors,
 }) => {
   return (
     <div>
@@ -18,7 +18,9 @@ const AddContactForm = ({
           placeholder="First Name"
           onChange={onInputChange}
         ></input>
-        <div className={styles.invalid_input}>{formErrors.firstName}</div>
+        <div className={styles.invalid_input}>
+          {errors && !formData.firstName && <div>First Name is required</div>}
+        </div>
         <input
           name="lastName"
           type="text"
@@ -26,7 +28,9 @@ const AddContactForm = ({
           placeholder="Last Name"
           onChange={onInputChange}
         ></input>
-        <div className={styles.invalid_input}>{formErrors.lastName}</div>
+        <div className={styles.invalid_input}>
+          {errors && !formData.lastName && <div>Last Name is required</div>}
+        </div>
         <input
           name="DoB"
           type="date"
@@ -34,7 +38,9 @@ const AddContactForm = ({
           placeholder="Date Of Birth"
           onChange={onInputChange}
         ></input>
-        <div className={styles.invalid_input}>{formErrors.DoB}</div>
+        <div className={styles.invalid_input}>
+          {errors && !formData.DoB && <div>Date of Birth is required</div>}
+        </div>
         <h6>SELECT CONTACT TYPE</h6>
         <select
           name="contactType"
@@ -51,7 +57,9 @@ const AddContactForm = ({
           placeholder="Contact"
           onChange={onInputChange}
         ></input>
-        <div className={styles.invalid_input}>{formErrors.contact}</div>
+        <div className={styles.invalid_input}>
+          {errors && !formData.contact && <div>Contact is required</div>}
+        </div>
         <div className={styles.formSubmit}>
           <button onClick={resetForm}>CLEAR</button>
           <button onClick={onSubmit}>SUBMIT</button>

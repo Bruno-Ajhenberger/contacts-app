@@ -1,5 +1,5 @@
 import styles from "./Form.module.css";
-const LoginForm = ({ onSubmit, onInputChange, formErrors }) => {
+const LoginForm = ({ onSubmit, onInputChange, errors, formData }) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -11,7 +11,11 @@ const LoginForm = ({ onSubmit, onInputChange, formErrors }) => {
           placeholder="UserName"
           onChange={onInputChange}
         ></input>
-        <div className={styles.invalid_input}>{formErrors.userName}</div>
+        <div className={styles.invalid_input}>
+          {errors && (!formData.userName || formData.userName.length < 4) && (
+            <div>UserName should be at least 4 characters</div>
+          )}
+        </div>
         <input
           name="password"
           type="password"
@@ -19,7 +23,11 @@ const LoginForm = ({ onSubmit, onInputChange, formErrors }) => {
           placeholder="Password"
           onChange={onInputChange}
         ></input>
-        <div className={styles.invalid_input}>{formErrors.password}</div>
+        <div className={styles.invalid_input}>
+          {errors && (!formData.password || formData.password.length < 6) && (
+            <div>Password should be at least 6 characters</div>
+          )}
+        </div>
         <button>SUBMIT</button>
       </form>
     </div>

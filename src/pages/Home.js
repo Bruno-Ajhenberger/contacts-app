@@ -1,12 +1,11 @@
-import NavBar from "../components/ui/NavBar";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import useForm from "../hooks/useForm";
 import ContactsContext from "../store/context/ContactsContext";
 import { nanoid } from "nanoid";
 import AddContactForm from "../components/AddContactForm/AddContactForm";
+import { validateContactForm } from "../helpers/validators/validateContactForm";
 
 let INIT_STATE = {
-  id: nanoid(),
   firstName: "",
   lastName: "",
   contactType: "email",
@@ -17,16 +16,23 @@ let INIT_STATE = {
 const Home = () => {
   const contactsContext = useContext(ContactsContext);
 
-  const { formData, onInputChange, resetForm, formErrors, validateAll } =
+  const { formData, onInputChange, resetForm, errors, setErrors } =
     useForm(INIT_STATE);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (validateAll() === 0) {
-      contactsContext.addContact({ ...formData });
-      INIT_STATE.id = nanoid();
-      resetForm();
+
+    const hasErrors = validateContactForm(formData);
+
+    if (hasErrors) {
+      setErrors(true);
+      return;
     }
+    const formDataCopy = { ...formData };
+    formDataCopy.id = nanoid();
+    contactsContext.addContact(formDataCopy);
+    INIT_STATE.id = nanoid();
+    resetForm();
   };
 
   const reset = (event) => {
@@ -36,13 +42,12 @@ const Home = () => {
 
   return (
     <div>
-      <NavBar />
       <AddContactForm
         onSubmit={onSubmit}
         formData={formData}
         onInputChange={onInputChange}
         resetForm={reset}
-        formErrors={formErrors}
+        errors={errors}
       ></AddContactForm>
     </div>
   );

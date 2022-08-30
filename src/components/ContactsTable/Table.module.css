@@ -38,14 +38,3 @@ td {
   width: 10vw;
   text-align: center;
 }
-.modal {
-  position: absolute;
-  background-color: white;
-  height: min-content;
-  width: min-content;
-  border: none;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}

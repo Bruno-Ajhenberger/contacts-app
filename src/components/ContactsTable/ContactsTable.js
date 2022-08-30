@@ -1,28 +1,27 @@
 import styles from "./Table.module.css";
-import ReactModal from "react-modal";
 import TableRow from "./TableRow";
-import UpdateContactFormController from "../UpdateContact/UpdateContactFormController";
+import UpdateModal from "../UpdateContact/UpdateModal";
 
 const ContactsTable = ({
   isOpen,
   contacts,
   onUpdate,
   closeModal,
-  updateContact,
+  formData,
+  errors,
+  onSubmit,
+  onInputChange,
 }) => {
   return (
     <div className={styles.main}>
-      <ReactModal
-        ariaHideApp={false}
+      <UpdateModal
         isOpen={isOpen}
-        onRequestClose={closeModal}
-        className={styles.modal}
-      >
-        <UpdateContactFormController
-          updateContact={updateContact}
-          closeModal={closeModal}
-        />
-      </ReactModal>
+        closeModal={closeModal}
+        errors={errors}
+        formData={formData}
+        onSubmit={onSubmit}
+        onInputChange={onInputChange}
+      ></UpdateModal>
       <table>
         <thead>
           <tr>
